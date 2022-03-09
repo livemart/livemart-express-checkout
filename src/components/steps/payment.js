@@ -80,9 +80,9 @@ const Payment = ({ region, country, activeStep }) => {
     let order = checkoutResp.data.data.orderGuestCheckout
     let customerEmail = shippingAddress.email
 
-    if (isPlaceOrder || true) {
+    if (isPlaceOrder) {
       livemartStorage.clear()
-      await router.push(`/completed?orderHash=${order.hash}&customerEmail=${customerEmail}`)
+      await router.push(`/orders/${order.hash}?customerEmail=${customerEmail}`)
       return
     }
 
@@ -116,9 +116,6 @@ const Payment = ({ region, country, activeStep }) => {
 
   useEffect(() => {
     if (activeStep === "payment") {
-      // setFullCountry(
-      //   region.countries.find(c => c.iso_2 === country).display_name
-      // )
     }
   }, [country, region, activeStep])
 
