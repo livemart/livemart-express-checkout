@@ -4,7 +4,7 @@ import Payment from "./payment"
 import Product from "./product"
 import Shipping from "./shipping"
 
-const Steps = ({ product, regions, country, region }) => {
+const Steps = ({ product, regions, country, region, storeInfo }) => {
   const [activeStep, setActiveStep] = useState("product")
 
   // When region change, we reset the checkout flow
@@ -18,6 +18,7 @@ const Steps = ({ product, regions, country, region }) => {
         region={region}
         regions={regions}
         product={product}
+        storeInfo={storeInfo}
         setActiveStep={setActiveStep}
         activeStep={activeStep}
       />
@@ -26,8 +27,9 @@ const Steps = ({ product, regions, country, region }) => {
         country={country}
         activeStep={activeStep}
         regions={regions}
+        storeInfo={storeInfo}
       />
-      <Payment region={region} country={country} activeStep={activeStep} />
+      <Payment region={region} storeInfo={storeInfo} country={country} activeStep={activeStep} />
     </Flex>
   )
 }

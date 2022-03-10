@@ -1,8 +1,9 @@
 import { Flex, Image, Text } from "@theme-ui/components"
 import React, { useEffect, useState } from "react"
 import { livemartStorage } from "../../utils/client"
+import { calculateDiscountedPrice, calculatePrice, showDiscount } from "../../utils/pricing"
 
-const Review = () => {
+const Review = ({ storeInfo }) => {
   const [item, setItem] = useState(null)
 
   useEffect(() => {
@@ -60,7 +61,10 @@ const Review = () => {
         </Text>
         <Text sx={{ fontWeight: 300, marginTop: "5px" }}>
           <Text sx={{ color: "#3f3e3e" }}>Price: </Text>
-          {(item?.purchasePrice / 100).toFixed(2)} USD
+          {storeInfo.currency} {
+          item?.product?.productSpecificDiscount ? calculateDiscountedPrice(item?.product) : calculatePrice(item?.purchasePrice)
+        }
+          {item?.product?.productSpecificDiscount ? showDiscount(item?.product) : ""}
         </Text>
       </Flex>
     </Flex>

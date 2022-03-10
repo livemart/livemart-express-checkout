@@ -8,7 +8,8 @@ const Shipping = ({
                     country,
                     activeStep,
                     setActiveStep,
-                    setLoading
+                    setLoading,
+                    storeInfo
                   }) => {
 
   const hasShipping = false

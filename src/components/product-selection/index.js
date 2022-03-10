@@ -8,7 +8,8 @@ const ProductSelection = ({
                             region,
                             country,
                             nextStep,
-                            setLoading
+                            setLoading,
+                            storeInfo
                           }) => {
   const handleSubmit = async () => {
     setLoading(true)
@@ -54,7 +55,7 @@ const ProductSelection = ({
     <Box>
       <Text variant="header3">Product</Text>
       <Flex sx={{ mt: "16px", justifyContent: "center" }}>
-        <ProductDisplay region={region} product={product} />
+        <ProductDisplay region={region} product={product} storeInfo={storeInfo} />
       </Flex>
       <Divider sx={{ color: "#E5E7EB", my: "16px" }} />
       <Button sx={{}} onClick={() => handleSubmit()} variant="cta">

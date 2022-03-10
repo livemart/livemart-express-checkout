@@ -3,7 +3,7 @@ import React from "react"
 import Info from "./info"
 import OptionSelector from "./option-selector"
 
-const ProductDisplay = ({ region, product }) => {
+const ProductDisplay = ({ region, product, storeInfo }) => {
   return product ? (
     <Flex sx={{ flexDirection: "column" }}>
       <Flex sx={{ flexDirection: "row", width: "100%", height: "100%" }}>
@@ -17,7 +17,7 @@ const ProductDisplay = ({ region, product }) => {
           src={product.fullImages.length > 0 ? product.fullImages[0] : ""}
           alt={product.name}
         />
-        <Info product={product} region={region} />
+        <Info product={product} region={region} storeInfo={storeInfo} />
       </Flex>
       <Text
         sx={{

@@ -71,7 +71,7 @@ class LiveMart {
 
   updateCart(params) {
     console.log("calling updateCart...")
-    let query = `mutation { updateCart(id: "${params.cartId}", params: { cartItems: ${params.cartItems} }) { id isShippingRequired cartItems { id product { id name slug description sku stock maxItemPerOrder price fullImages isDigitalProduct productUnit createdAt updatedAt } quantity purchasePrice attributes { name selectedValue } variation { id name price sku stock } } } }`
+    let query = `mutation { updateCart(id: "${params.cartId}", params: { cartItems: ${params.cartItems} }) { id isShippingRequired cartItems { id product { id name slug description sku stock maxItemPerOrder productSpecificDiscount price fullImages isDigitalProduct productUnit createdAt updatedAt } quantity purchasePrice attributes { name selectedValue } variation { id name price sku stock } } } }`
     return this._send_request(query)
   }
 
@@ -118,6 +118,11 @@ class LiveMart {
 
   getOrderByGuest(orderHash, email) {
     let query = `query { orderByCustomerEmail(hash: "${orderHash}", email: "${email}") { id hash shippingCharge paymentProcessingFee subtotal grandTotal discountedAmount status paymentStatus createdAt updatedAt billingAddress { id street streetTwo city state postcode email phone location { id name shortCode } } shippingAddress { id street streetTwo city state postcode email phone location { id name shortCode } } cart { isShippingRequired cartItems { product { id name slug description fullImages isDigitalProduct productUnit } quantity purchasePrice attributes { name selectedValue } variation { id name price sku stock } } } customer { email phone firstName lastName profilePicture } paymentMethod { id displayName currencyName currencySymbol isDigitalPayment } shippingMethod { id displayName deliveryCharge deliveryTimeInDays WeightUnit isFlat isActive } couponCode { code } payments { isPaid payableAmount gatewayName } } }`
+    return this._send_request(query)
+  }
+
+  getStoreBySecret() {
+    let query = `query { storeBySecret { name title description tags metaName metaDescription metaTags logo favicon bannerImage isOpen currency website supportEmail supportPhone createdAt updatedAt street streetOptional city state postcode location { id name shortCode } } }`
     return this._send_request(query)
   }
 

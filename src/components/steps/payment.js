@@ -28,7 +28,7 @@ const DeliveryReview = () => (
   </Flex>
 )
 
-const Payment = ({ region, country, activeStep }) => {
+const Payment = ({ region, country, activeStep, storeInfo }) => {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -147,7 +147,7 @@ const Payment = ({ region, country, activeStep }) => {
             )}
             <Text variant="header3">Payment</Text>
             <Box mt={"16px"}>
-              <Review /> <Total />
+              <Review storeInfo={storeInfo} /> <Total storeInfo={storeInfo} />
               <DeliveryReview />
               <Flex
                 sx={{

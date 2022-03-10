@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import Steps from "../components/steps"
 import { livemart } from "../utils/client"
 
-const ProductPage = ({ product, regions }) => {
+const ProductPage = ({ product, regions, storeInfo }) => {
   const [region, setRegion] = useState(regions?.[0] || null)
   const [country, setCountry] = useState(region?.[0] || null)
 
@@ -29,6 +29,7 @@ const ProductPage = ({ product, regions }) => {
           regions={regions}
           region={region}
           country={country}
+          storeInfo={storeInfo}
         />
       </Layout>
     </>
@@ -39,12 +40,14 @@ export async function getServerSideProps(ctx) {
   const handle = ctx.query.handle
   const response = await livemart.product_by_slug(handle)
   const regionResponse = await livemart.list_locations()
+  const storeInfoResp = await livemart.getStoreBySecret()
 
   const product = response.data.data.productBySlug
   const regions = regionResponse.data.data.locations
+  const storeInfo = storeInfoResp.data.data.storeBySecret
 
   // Pass post data to the page via props
-  return { props: { product, regions } }
+  return { props: { product, regions, storeInfo } }
 }
 
 export default ProductPage

@@ -10,6 +10,7 @@ const Product = ({
                    regions,
                    country,
                    region,
+                   storeInfo,
                    activeStep,
                    setActiveStep
                  }) => {
@@ -54,6 +55,7 @@ const Product = ({
             product={product}
             nextStep={() => setActiveStep("shipping")}
             setLoading={setLoading}
+            storeInfo={storeInfo}
           />
         </Card>
       ) : (

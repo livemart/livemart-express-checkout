@@ -1,7 +1,8 @@
 import { Flex, Text } from "@theme-ui/components"
 import React from "react"
+import { calculateDiscountedPrice, calculatePrice, showDiscount } from "../../../utils/pricing"
 
-const Info = ({ product, region }) => {
+const Info = ({ product, region, storeInfo }) => {
   return (
     <Flex
       sx={{
@@ -38,7 +39,9 @@ const Info = ({ product, region }) => {
             fontWeight: 300,
             mb: "1em"
           }}>
-          {`USD ${(product.price / 100).toFixed(2)}`}
+          {`${storeInfo?.currency} ${product.productSpecificDiscount ?
+            calculateDiscountedPrice(product) : calculatePrice(product.price)}`}
+          {product.productSpecificDiscount ? showDiscount(product) : ""}
         </Text>
       </Flex>
     </Flex>
