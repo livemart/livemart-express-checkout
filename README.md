@@ -27,6 +27,10 @@ out [LiveMart Express Checkout](https://livemart.store/contents/how-to-launch-ex
 
 <br/>
 
+## Demo
+
+<img src="https://github.com/livemart/livemart-express-checkout/blob/master/extras/livemart_express_checkout_demo.gif?raw=true">
+
 ## 🚀 Get started!
 
 ### Link LiveMart
