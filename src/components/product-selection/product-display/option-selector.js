@@ -38,6 +38,8 @@ const OptionSelector = ({ product }) => {
     setQuantity(quant)
     livemartStorage.set(`${product.id}_quantity`, `${quant}`)
   }
+  setQuantity(1)
+  livemartStorage.set(`${product.id}_quantity`, "1")
 
   const handleSelect = e => {
     const pair = JSON.parse(e.target.value)
